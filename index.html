@@ -32,10 +32,15 @@
 
     html {
       scroll-behavior: smooth;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     body {
       margin: 0;
+      width: 100%;
+      max-width: 100%;
       color: var(--ink);
       background:
         radial-gradient(circle at 15% 10%, rgba(255,255,255,.75), transparent 28%),
@@ -142,6 +147,7 @@
       place-items: center;
       padding: 68px 0 72px;
       position: relative;
+      overflow: hidden;
     }
 
     .hero::after {
@@ -312,7 +318,7 @@
     }
 
     .manifesto {
-      padding: 58px;
+      padding: 40px 46px;
       border-radius: var(--radius-xl);
       position: relative;
       overflow: hidden;
@@ -321,10 +327,10 @@
     .manifesto::after {
       content: "";
       position: absolute;
-      width: 430px;
-      height: 430px;
-      right: -170px;
-      top: -170px;
+      width: 340px;
+      height: 340px;
+      right: -140px;
+      top: -140px;
       border-radius: 50%;
       background: rgba(14,111,103,.09);
       filter: blur(20px);
@@ -334,11 +340,11 @@
       position: relative;
       z-index: 1;
       margin: 0;
-      max-width: 980px;
+      max-width: 900px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(34px, 4.5vw, 62px);
-      line-height: 1.06;
-      letter-spacing: -.045em;
+      font-size: clamp(26px, 3.4vw, 42px);
+      line-height: 1.14;
+      letter-spacing: -.04em;
     }
 
     .manifesto em {
@@ -360,10 +366,10 @@
 
     .number {
       font-family: Georgia, serif;
-      font-size: 18px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--accent-dark);
-      margin-bottom: 42px;
+      margin-bottom: 26px;
     }
 
     .why-card h3 {
@@ -522,17 +528,20 @@
     }
 
     .social {
-      padding: 11px 17px;
+      padding: 12px 19px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      color: var(--muted);
+      border: 1.5px solid rgba(23,23,20,.28);
+      color: var(--ink);
       font-size: 14px;
-      background: rgba(255,255,255,.46);
+      font-weight: 650;
+      background: rgba(255,255,255,.6);
+      box-shadow: 0 6px 16px rgba(35,31,22,.05);
     }
 
     .social:hover {
       color: var(--ink);
-      background: rgba(255,255,255,.55);
+      border-color: rgba(23,23,20,.42);
+      background: rgba(255,255,255,.78);
     }
 
     footer {
@@ -640,11 +649,11 @@
       }
 
       .manifesto {
-        padding: 38px 25px;
+        padding: 30px 24px;
       }
 
       .manifesto p {
-        font-size: 34px;
+        font-size: 26px;
       }
 
       .why-card {
@@ -652,7 +661,8 @@
       }
 
       .number {
-        margin-bottom: 40px;
+        font-size: 22px;
+        margin-bottom: 20px;
       }
 
       .download-card {
@@ -709,11 +719,11 @@
       .section-head { margin-bottom: 28px; }
       .section-kicker { font-size: 12px; margin-bottom: 12px; }
       h2 { font-size: clamp(40px, 12vw, 56px); line-height: 1.02; }
-      .manifesto { padding: 34px 24px; border-radius: 28px; }
-      .manifesto p { font-size: clamp(31px, 9vw, 45px); line-height: 1.08; }
+      .manifesto { padding: 28px 22px; border-radius: 28px; }
+      .manifesto p { font-size: clamp(24px, 7vw, 32px); line-height: 1.15; }
       .why-grid { gap: 14px; }
       .why-card { min-height: 0; padding: 26px 24px; }
-      .number { font-size: 17px; margin-bottom: 28px; }
+      .number { font-size: 22px; margin-bottom: 20px; }
       .why-card h3 { font-size: 27px; }
       .chapter { grid-template-columns: 44px minmax(0, 1fr); gap: 12px; }
       .download-section { padding-top: 46px; }
@@ -723,7 +733,7 @@
       .author-photo { width: min(190px, 58vw); height: min(190px, 58vw); }
       .author-copy p { font-size: 17px; }
       .socials { gap: 10px; margin-top: 22px; }
-      .social { padding: 11px 16px; background: rgba(255,255,255,.58); color: #47443e; }
+      .social { padding: 12px 18px; background: rgba(255,255,255,.65); color: var(--ink); border-color: rgba(23,23,20,.28); }
       footer { padding: 42px 0 28px; }
       .footer-row { gap: 22px; }
     }
@@ -794,7 +804,7 @@
           </p>
         </div>
 
-        <div class="section-head" style="margin-top: 68px;">
+        <div class="section-head" style="margin-top: 46px;">
           <div class="section-kicker">Neden ücretsiz?</div>
           <h2>Bir fiyat etiketi koymak yerine, erişimi kaldırmayı seçtim.</h2>
         </div>
@@ -916,7 +926,7 @@
 
         <div class="download-card">
           <div>
-            <div class="section-kicker" style="color:#69b8af;">Ücretsiz erişim</div>
+            <div class="section-kicker" style="color:#69b8af;">İndirme</div>
             <h2>Kitabı indir, istediğin yerde oku.</h2>
             <p>
               PDF veya EPUB formatında indir. İstediğin cihazda oku ve kitabı
@@ -974,7 +984,7 @@
     <div class="wrap footer-row">
       <div>
         <div class="footer-brand">Kripto Paraları Anlamak</div>
-        <div class="footer-note">© 2026 Can Ahmet Değirmenci. Tüm hakları saklı değildir.</div>
+        <div class="footer-note">© 2026 Can Ahmet Değirmenci. Tüm hakları saklıdır.</div>
       </div>
 
       <div class="footer-links">
