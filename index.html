@@ -4,773 +4,792 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#eee9df">
-  <meta name="description" content="Kripto Paraları Anlamak — Web3 alanına yeni olanlar için kapsamlı ve ücretsiz bir rehber.">
+  <meta name="description" content="Kripto Paraları Anlamak — kripto para dünyasını temelden anlamak için ücretsiz bir kitap.">
   <title>Kripto Paraları Anlamak — Can Ahmet Değirmenci</title>
-
   <link rel="icon" type="image/png" href="assets/icons/favicon.png">
 
   <style>
-    :root {
-      --paper: #eee9df;
-      --paper-2: #f5f1e9;
-      --ink: #171714;
-      --muted: #68665f;
-      --line: rgba(23, 23, 20, .12);
-      --glass: rgba(255, 253, 247, .34);
-      --glass-strong: rgba(255, 253, 247, .58);
-      --accent: #0e6f67;
-      --accent-dark: #084f4a;
-      --accent-soft: rgba(14, 111, 103, .10);
-      --shadow: 0 24px 80px rgba(36, 31, 21, .12);
-      --radius-xl: 34px;
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --max: 1180px;
+    :root{
+      --paper:#eee9df;
+      --paper-light:#f7f3eb;
+      --ink:#171714;
+      --muted:#68665f;
+      --muted-dark:#4f4d47;
+      --line:rgba(23,23,20,.12);
+      --glass:rgba(246,242,233,.68);
+      --accent:#0e6f67;
+      --accent-dark:#084f4a;
+      --shadow:0 22px 70px rgba(36,31,21,.11);
+      --radius-xl:30px;
+      --radius-lg:22px;
+      --max:1160px
     }
 
-    * { box-sizing: border-box; }
+    *{box-sizing:border-box}
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html{scroll-behavior:smooth}
 
-    body {
-      margin: 0;
-      color: var(--ink);
+    body{
+      margin:0;
+      color:var(--ink);
       background:
-        radial-gradient(circle at 15% 10%, rgba(255,255,255,.75), transparent 28%),
-        radial-gradient(circle at 85% 24%, rgba(14,111,103,.08), transparent 30%),
-        linear-gradient(180deg, #e9e4da 0%, var(--paper) 42%, #e7e2d8 100%);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
+        radial-gradient(circle at 12% 8%,rgba(255,255,255,.76),transparent 27%),
+        radial-gradient(circle at 88% 18%,rgba(14,111,103,.075),transparent 29%),
+        linear-gradient(180deg,#e9e4da 0%,var(--paper) 45%,#e7e2d8 100%);
+      font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.6;
+      overflow-x:hidden
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .22;
-      background-image:
-        radial-gradient(rgba(0,0,0,.09) .6px, transparent .7px);
-      background-size: 5px 5px;
-      mix-blend-mode: multiply;
-      z-index: 20;
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.16;
+      background-image:radial-gradient(rgba(0,0,0,.09) .6px,transparent .7px);
+      background-size:5px 5px;
+      mix-blend-mode:multiply;
+      z-index:50
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    a{
+      color:inherit;
+      text-decoration:none
     }
 
-    img {
-      display: block;
-      max-width: 100%;
+    img{
+      display:block;
+      max-width:100%
     }
 
-    .wrap {
-      width: min(calc(100% - 40px), var(--max));
-      margin: 0 auto;
+    .wrap{
+      width:min(calc(100% - 40px),var(--max));
+      margin:0 auto
     }
 
-    .glass {
-      background: var(--glass);
-      border: 1px solid rgba(255,255,255,.72);
+    .glass{
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,.72);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.7),
-        0 18px 55px rgba(35,31,22,.06);
-      backdrop-filter: blur(14px) saturate(112%);
-      -webkit-backdrop-filter: blur(14px) saturate(112%);
-    }
-
-    .nav {
-      position: sticky;
-      top: 16px;
-      z-index: 30;
-      width: min(calc(100% - 32px), 1120px);
-      margin: 16px auto 0;
-      padding: 10px 12px 10px 18px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      font-weight: 750;
-      letter-spacing: -.01em;
-    }
-
-    .brand-mark {
-      width: 28px;
-      height: 28px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--ink);
-      color: var(--paper-2);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover { color: var(--ink); }
-
-    .nav-download {
-      padding: 10px 15px;
-      border-radius: 999px;
-      background: var(--ink);
-      color: white;
-      font-weight: 700;
-    }
-
-    .hero {
-      min-height: 720px;
-      display: grid;
-      place-items: center;
-      padding: 68px 0 72px;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 540px;
-      height: 540px;
-      right: -210px;
-      top: 80px;
-      border-radius: 50%;
-      background: rgba(14,111,103,.08);
-      filter: blur(70px);
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: 52px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(14,111,103,.08);
-      color: var(--accent-dark);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 5px rgba(14,111,103,.10);
+        inset 0 1px 0 rgba(255,255,255,.82),
+        0 18px 55px rgba(35,31,22,.08);
+      backdrop-filter:blur(22px) saturate(112%);
+      -webkit-backdrop-filter:blur(22px) saturate(112%)
+    }
+
+    /* NAVIGATION */
+
+    .nav{
+      position:sticky;
+      top:14px;
+      z-index:40;
+      width:min(calc(100% - 28px),1100px);
+      margin:14px auto 0;
+      padding:9px 10px 9px 15px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      min-width:0;
+      font-size:14px;
+      font-weight:780;
+      letter-spacing:-.015em
+    }
+
+    .brand-mark{
+      width:32px;
+      height:32px;
+      flex:0 0 32px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      background:var(--ink);
+      color:var(--paper-light);
+      font-size:10px;
+      font-weight:850;
+      letter-spacing:-.04em
+    }
+
+    .nav-download{
+      padding:10px 17px;
+      border-radius:999px;
+      background:var(--ink);
+      color:#fff;
+      font-size:13px;
+      font-weight:800;
+      transition:transform .2s ease,box-shadow .2s ease
+    }
+
+    .nav-download:hover{
+      transform:translateY(-1px);
+      box-shadow:0 8px 22px rgba(23,23,20,.16)
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:680px;
+      display:grid;
+      align-items:center;
+      padding:54px 0 58px;
+      position:relative
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:520px;
+      right:-230px;
+      top:30px;
+      border-radius:50%;
+      background:rgba(14,111,103,.08);
+      filter:blur(75px);
+      pointer-events:none
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:.93fr 1.07fr;
+      gap:50px;
+      align-items:center;
+      position:relative;
+      z-index:1
+    }
+
+    .hero h1{
+      margin:0 0 20px;
+      max-width:690px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(56px,7vw,92px);
+      line-height:.91;
+      letter-spacing:-.065em;
+      font-weight:500
     }
 
-    h1 {
-      margin: 22px 0 20px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(58px, 7vw, 96px);
-      line-height: .91;
-      letter-spacing: -.065em;
-      font-weight: 500;
-      max-width: 760px;
+    .hero-lead{
+      max-width:590px;
+      margin:0;
+      color:var(--muted-dark);
+      font-size:clamp(18px,2vw,21px);
+      line-height:1.5
     }
 
-    .hero-lead {
-      max-width: 610px;
-      margin: 0;
-      color: #4f4d47;
-      font-size: clamp(18px, 2vw, 22px);
-      line-height: 1.55;
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:28px
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 34px;
+    .button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-height:50px;
+      padding:0 19px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:800;
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      min-height: 50px;
-      padding: 0 20px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 800;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    .button:hover{
+      transform:translateY(-2px)
     }
 
-    .button:hover {
-      transform: translateY(-2px);
+    .button-primary{
+      background:var(--ink);
+      color:#fff;
+      box-shadow:0 12px 28px rgba(23,23,20,.15)
     }
 
-    .button-primary {
-      background: var(--ink);
-      color: #fff;
-      box-shadow: 0 12px 28px rgba(23,23,20,.15);
+    .button-secondary{
+      background:rgba(255,255,255,.54);
+      border:1px solid rgba(23,23,20,.14)
     }
 
-    .button-secondary {
-      background: rgba(255,255,255,.62);
-      border: 1px solid rgba(23,23,20,.18);
-      box-shadow: 0 8px 22px rgba(23,23,20,.05);
+    .free-note{
+      margin:13px 0 0;
+      color:var(--muted);
+      font-size:13px
     }
 
-    .free-note {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 13px;
+    .hero-art{
+      position:relative;
+      padding:8px 20px
     }
-
-    .free-note strong { color: var(--ink); }
 
-    .hero-art {
-      position: relative;
-      padding: 28px;
+    .hero-art:before{
+      content:"";
+      position:absolute;
+      inset:6% 4%;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(14,111,103,.18),transparent 68%);
+      filter:blur(20px)
     }
 
-    .hero-art::before {
-      content: "";
-      position: absolute;
-      inset: 7% 6%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(14,111,103,.18), transparent 67%);
-      filter: blur(18px);
+    .mockup{
+      position:relative;
+      z-index:1;
+      width:min(100%,600px);
+      margin:0 auto;
+      filter:drop-shadow(0 34px 42px rgba(24,21,16,.19));
+      transform:rotate(1.2deg);
+      transition:transform .45s ease
     }
 
-    .mockup {
-      position: relative;
-      z-index: 1;
-      width: min(100%, 610px);
-      margin: 0 auto;
-      filter: drop-shadow(0 40px 45px rgba(24,21,16,.20));
-      transform: rotate(1.4deg);
-      transition: transform .5s ease;
+    .mockup:hover{
+      transform:rotate(0) translateY(-6px)
     }
 
-    .mockup:hover {
-      transform: rotate(0deg) translateY(-8px);
+    /* SHARED SECTIONS */
+
+    .section{
+      padding:68px 0;
+      position:relative
     }
 
-    .section {
-      padding: 92px 0;
-      position: relative;
+    .section+.section{
+      border-top:1px solid var(--line)
     }
 
-    .section + .section {
-      border-top: 1px solid var(--line);
+    .section-head{
+      max-width:780px;
+      margin-bottom:34px
     }
 
-    .section-head {
-      max-width: 760px;
-      margin-bottom: 36px;
+    .section-kicker{
+      display:block;
+      color:var(--accent-dark);
+      font-size:15px;
+      font-weight:850;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      margin-bottom:12px
     }
 
-    .section-kicker {
-      color: var(--accent-dark);
-      font-size: 13px;
-      font-weight: 850;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      margin-bottom: 15px;
+    h2{
+      margin:0;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(42px,5vw,66px);
+      line-height:1;
+      letter-spacing:-.055em;
+      font-weight:500
     }
+
+    /* MANIFESTO */
 
-    h2 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(42px, 5vw, 68px);
-      line-height: 1;
-      letter-spacing: -.055em;
-      font-weight: 500;
+    .manifesto-wrap{
+      padding-top:14px
     }
 
-    .manifesto {
-      padding: 58px;
-      border-radius: var(--radius-xl);
-      position: relative;
-      overflow: hidden;
+    .manifesto{
+      padding:52px clamp(28px,6vw,72px);
+      border-radius:var(--radius-xl);
+      position:relative;
+      overflow:hidden
     }
 
-    .manifesto::after {
-      content: "";
-      position: absolute;
-      width: 430px;
-      height: 430px;
-      right: -170px;
-      top: -170px;
-      border-radius: 50%;
-      background: rgba(14,111,103,.09);
-      filter: blur(20px);
+    .manifesto:after{
+      content:"";
+      position:absolute;
+      width:390px;
+      height:390px;
+      right:-160px;
+      top:-150px;
+      border-radius:50%;
+      background:rgba(14,111,103,.085);
+      filter:blur(22px)
     }
 
-    .manifesto p {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      max-width: 980px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(34px, 4.5vw, 62px);
-      line-height: 1.06;
-      letter-spacing: -.045em;
+    .manifesto p{
+      position:relative;
+      z-index:1;
+      margin:0;
+      max-width:960px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(34px,4.35vw,60px);
+      line-height:1.06;
+      letter-spacing:-.045em
     }
 
-    .manifesto em {
-      color: var(--accent-dark);
-      font-style: normal;
+    .manifesto em{
+      color:var(--accent-dark);
+      font-style:normal
     }
 
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
+    /* WHY FREE */
+
+    .why-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px
     }
 
-    .why-card {
-      padding: 34px;
-      min-height: 220px;
-      border-radius: var(--radius-lg);
+    .why-card{
+      padding:27px 29px 29px;
+      min-height:205px;
+      border-radius:var(--radius-lg)
     }
 
-    .number {
-      font-family: Georgia, serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--accent-dark);
-      margin-bottom: 42px;
+    .number{
+      margin-bottom:34px;
+      color:var(--accent-dark);
+      font-family:Georgia,serif;
+      font-size:25px;
+      line-height:1
     }
 
-    .why-card h3 {
-      margin: 0 0 10px;
-      font-family: Georgia, serif;
-      font-size: 29px;
-      font-weight: 500;
-      letter-spacing: -.025em;
+    .why-card h3{
+      margin:0 0 8px;
+      font-family:Georgia,serif;
+      font-size:28px;
+      font-weight:500;
+      letter-spacing:-.025em
     }
 
-    .why-card p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 480px;
+    .why-card p{
+      margin:0;
+      color:var(--muted);
+      max-width:500px
     }
+
+    /* CHAPTERS */
 
-    .chapters {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border-top: 1px solid var(--line);
+    .chapters{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      border-top:1px solid var(--line)
     }
 
-    .chapter {
-      padding: 28px 10px 28px 0;
-      border-bottom: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: 65px 1fr;
-      gap: 16px;
-      align-items: start;
+    .chapter{
+      min-height:132px;
+      padding:24px 24px 24px 0;
+      border-bottom:1px solid var(--line);
+      display:grid;
+      grid-template-columns:60px 1fr;
+      gap:16px;
+      align-items:start
     }
 
-    .chapter:nth-child(even) {
-      padding-left: 30px;
-      border-left: 1px solid var(--line);
+    .chapter:nth-child(even){
+      padding-left:28px;
+      border-left:1px solid var(--line)
     }
 
-    .chapter-no {
-      color: var(--accent-dark);
-      font-family: Georgia, serif;
-      font-size: 14px;
-      padding-top: 5px;
+    .chapter-no{
+      color:var(--accent-dark);
+      font-family:Georgia,serif;
+      font-size:21px;
+      padding-top:3px
     }
 
-    .chapter h3 {
-      margin: 0;
-      font-family: Georgia, serif;
-      font-weight: 500;
-      font-size: 25px;
-      line-height: 1.15;
-      letter-spacing: -.025em;
+    .chapter h3{
+      margin:0;
+      font-family:Georgia,serif;
+      font-weight:500;
+      font-size:25px;
+      line-height:1.15;
+      letter-spacing:-.025em
     }
 
-    .chapter p {
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 14px;
+    .chapter p{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:14px
     }
 
-    .download-section {
-      padding-top: 58px;
+    /* DOWNLOAD */
+
+    .download-section{
+      padding-top:50px
     }
 
-    .download-card {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 40px;
-      padding: 45px;
-      border-radius: var(--radius-xl);
-      background: var(--ink);
-      color: white;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
+    .download-card{
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:center;
+      gap:34px;
+      padding:38px;
+      border-radius:var(--radius-xl);
+      background:var(--ink);
+      color:#fff;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden
     }
 
-    .download-card::before {
-      content: "";
-      position: absolute;
-      width: 360px;
-      height: 360px;
-      right: -100px;
-      top: -170px;
-      border-radius: 50%;
-      background: rgba(42, 169, 157, .26);
-      filter: blur(28px);
+    .download-card:before{
+      content:"";
+      position:absolute;
+      width:350px;
+      height:350px;
+      right:-110px;
+      top:-170px;
+      border-radius:50%;
+      background:rgba(42,169,157,.25);
+      filter:blur(28px)
     }
 
-    .download-card > * {
-      position: relative;
-      z-index: 1;
+    .download-card>*{
+      position:relative;
+      z-index:1
     }
 
-    .download-card h2 {
-      font-size: clamp(38px, 4vw, 58px);
-      margin-bottom: 12px;
+    .download-card h2{
+      font-size:clamp(38px,4vw,56px);
+      margin-bottom:9px
     }
 
-    .download-card p {
-      margin: 0;
-      max-width: 650px;
-      color: rgba(255,255,255,.68);
+    .download-card p{
+      margin:0;
+      max-width:650px;
+      color:rgba(255,255,255,.68)
     }
 
-    .download-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .download-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px
     }
 
-    .download-actions .button-primary {
-      background: white;
-      color: var(--ink);
+    .download-actions .button-primary{
+      background:#fff;
+      color:var(--ink)
     }
 
-    .download-actions .button-secondary {
-      border-color: rgba(255,255,255,.18);
-      color: white;
-      background: rgba(255,255,255,.08);
+    .download-actions .button-secondary{
+      background:rgba(238,235,228,.14);
+      border:1px solid rgba(255,255,255,.24);
+      color:#fff
     }
 
-    .author-grid {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 55px;
-      align-items: center;
+    /* AUTHOR */
+
+    .author-grid{
+      display:grid;
+      grid-template-columns:210px 1fr;
+      gap:42px;
+      align-items:center
     }
 
-    .author-photo {
-      width: 260px;
-      height: 260px;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 25px 60px rgba(30,27,21,.15);
-      border: 8px solid rgba(255,255,255,.42);
+    .author-photo{
+      width:210px;
+      height:210px;
+      object-fit:cover;
+      border-radius:50%;
+      box-shadow:0 24px 55px rgba(30,27,21,.15);
+      border:7px solid rgba(255,255,255,.48)
     }
 
-    .author-copy p {
-      max-width: 730px;
-      color: #55534d;
-      font-size: 18px;
+    .author-copy p{
+      max-width:740px;
+      color:#55534d;
+      font-size:18px
     }
 
-    .author-sign {
-      margin-top: 24px;
-      font-family: Georgia, serif;
-      font-size: 22px;
+    .socials{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:24px
     }
 
-    .socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 25px;
+    .social{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:116px;
+      padding:12px 16px;
+      border-radius:999px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(23,23,20,.18);
+      color:var(--ink);
+      font-size:14px;
+      font-weight:750;
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease
     }
 
-    .social {
-      padding: 11px 17px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-      background: rgba(255,255,255,.46);
+    .social:hover{
+      transform:translateY(-2px);
+      background:#fff;
+      border-color:rgba(23,23,20,.25)
     }
+
+    /* FOOTER */
 
-    .social:hover {
-      color: var(--ink);
-      background: rgba(255,255,255,.55);
+    footer{
+      padding:34px 0 42px;
+      border-top:1px solid var(--line)
     }
 
-    footer {
-      padding: 55px 0 35px;
-      border-top: 1px solid var(--line);
+    .footer-inner{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:24px
     }
 
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 30px;
+    .footer-title{
+      font-weight:800;
+      font-size:14px
     }
 
-    .footer-brand {
-      font-family: Georgia, serif;
-      font-size: 23px;
-      letter-spacing: -.03em;
+    .footer-copy{
+      margin-top:4px;
+      color:var(--muted);
+      font-size:12px
     }
 
-    .footer-note {
-      margin-top: 7px;
-      color: var(--muted);
-      font-size: 13px;
+    .license{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+      transition:color .2s ease
     }
 
-    .footer-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 13px;
+    .license:hover{
+      color:var(--ink)
     }
 
-    .footer-links a:hover { color: var(--ink); }
+    /* RESPONSIVE */
 
-    @media (max-width: 900px) {
-      .hero-grid,
-      .author-grid {
-        grid-template-columns: 1fr;
+    @media(max-width:900px){
+      .hero{
+        min-height:auto;
+        padding:55px 0 58px
       }
 
-      .hero {
-        min-height: auto;
-        padding-top: 75px;
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:34px
       }
 
-      .hero-art {
-        max-width: 680px;
-        margin: 0 auto;
+      .hero-art{
+        order:-1;
+        padding:0 24px
+      }
+
+      .mockup{
+        width:min(100%,500px)
       }
 
       .why-grid,
-      .chapters {
-        grid-template-columns: 1fr;
+      .chapters{
+        grid-template-columns:1fr
       }
 
-      .chapter:nth-child(even) {
-        padding-left: 0;
-        border-left: 0;
+      .chapter:nth-child(even){
+        padding-left:0;
+        border-left:0
       }
 
-      .download-card {
-        grid-template-columns: 1fr;
+      .download-card{
+        grid-template-columns:1fr
       }
 
-      .author-photo {
-        width: 190px;
-        height: 190px;
-      }
-    }
-
-    @media (max-width: 650px) {
-      .wrap {
-        width: min(calc(100% - 28px), var(--max));
+      .author-grid{
+        grid-template-columns:190px 1fr;
+        gap:30px
       }
 
-      .nav {
-        top: 8px;
-        width: calc(100% - 16px);
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 60px 0 75px;
-      }
-
-      h1 {
-        font-size: clamp(50px, 16vw, 76px);
-      }
-
-      .hero-lead {
-        font-size: 17px;
-      }
-
-      .hero-art {
-        padding: 5px;
-      }
-
-      .section {
-        padding: 85px 0;
-      }
-
-      .manifesto {
-        padding: 38px 25px;
-      }
-
-      .manifesto p {
-        font-size: 34px;
-      }
-
-      .why-card {
-        min-height: auto;
-      }
-
-      .number {
-        margin-bottom: 40px;
-      }
-
-      .download-card {
-        padding: 32px 25px;
-      }
-
-      .download-actions {
-        width: 100%;
-      }
-
-      .download-actions .button {
-        flex: 1 1 150px;
-      }
-
-      .footer-row {
-        flex-direction: column;
-        align-items: flex-start;
+      .author-photo{
+        width:190px;
+        height:190px
       }
     }
-    /* Mobile viewport hardening and final layout tuning */
-    html, body { width: 100%; max-width: 100%; }
-    main, section, .wrap, .hero-grid, .hero-art, .download-card, .author-grid { min-width: 0; }
 
-    @media (max-width: 650px) {
-      body { overflow-x: clip; }
-      .nav {
-        position: sticky;
-        top: 10px;
-        margin-top: 10px;
-        padding: 10px 12px 10px 14px;
-        background: rgba(255, 253, 247, .38);
-        border-color: rgba(255,255,255,.76);
-        backdrop-filter: blur(16px) saturate(115%);
-        -webkit-backdrop-filter: blur(16px) saturate(115%);
+    @media(max-width:620px){
+      .wrap{
+        width:min(calc(100% - 28px),var(--max))
       }
-      .brand { min-width: 0; gap: 9px; font-size: 13px; }
-      .brand span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .brand-mark { width: 40px; height: 40px; flex: 0 0 40px; border-radius: 13px; font-size: 11px; }
-      .nav-download { padding: 12px 18px; flex: 0 0 auto; }
 
-      .hero { min-height: auto; padding: 38px 0 58px; display: block; }
-      .hero-grid { display: flex; flex-direction: column; gap: 24px; align-items: stretch; }
-      .hero-grid > div:first-child { order: 2; }
-      .hero-art { order: 1; width: 100%; padding: 8px 0 0; }
-      .mockup { width: min(100%, 500px); max-width: 100%; margin: 0 auto; transform: rotate(1.1deg); }
-      .hero-art::before { inset: 8% 4%; }
-      h1 { font-size: clamp(50px, 15vw, 70px); line-height: .92; margin: 10px 0 22px; max-width: 100%; }
-      .hero-lead { max-width: 100%; font-size: 17px; line-height: 1.6; }
-      .hero-actions { margin-top: 28px; gap: 10px; }
-      .button { min-height: 54px; padding: 0 19px; font-size: 15px; }
-      .free-note { margin-top: 14px; }
+      .nav{
+        width:calc(100% - 20px);
+        top:10px;
+        margin-top:10px;
+        padding-left:11px
+      }
 
-      .section { padding: 68px 0; }
-      .section-head { margin-bottom: 28px; }
-      .section-kicker { font-size: 12px; margin-bottom: 12px; }
-      h2 { font-size: clamp(40px, 12vw, 56px); line-height: 1.02; }
-      .manifesto { padding: 34px 24px; border-radius: 28px; }
-      .manifesto p { font-size: clamp(31px, 9vw, 45px); line-height: 1.08; }
-      .why-grid { gap: 14px; }
-      .why-card { min-height: 0; padding: 26px 24px; }
-      .number { font-size: 17px; margin-bottom: 28px; }
-      .why-card h3 { font-size: 27px; }
-      .chapter { grid-template-columns: 44px minmax(0, 1fr); gap: 12px; }
-      .download-section { padding-top: 46px; }
-      .download-card { gap: 28px; padding: 34px 24px; border-radius: 28px; }
-      .download-actions .button { flex: 1 1 0; }
-      .author-grid { gap: 30px; }
-      .author-photo { width: min(190px, 58vw); height: min(190px, 58vw); }
-      .author-copy p { font-size: 17px; }
-      .socials { gap: 10px; margin-top: 22px; }
-      .social { padding: 11px 16px; background: rgba(255,255,255,.58); color: #47443e; }
-      footer { padding: 42px 0 28px; }
-      .footer-row { gap: 22px; }
+      .brand{
+        font-size:13px
+      }
+
+      .brand-mark{
+        width:30px;
+        height:30px;
+        flex-basis:30px
+      }
+
+      .nav-download{
+        padding:9px 14px
+      }
+
+      .hero{
+        padding:44px 0 45px
+      }
+
+      .hero-art{
+        padding:0 8px
+      }
+
+      .hero h1{
+        font-size:clamp(50px,16vw,70px)
+      }
+
+      .hero-lead{
+        font-size:17px
+      }
+
+      .section{
+        padding:54px 0
+      }
+
+      .section-head{
+        margin-bottom:27px
+      }
+
+      .section-kicker{
+        font-size:13px
+      }
+
+      h2{
+        font-size:clamp(38px,12vw,52px)
+      }
+
+      .manifesto{
+        padding:36px 24px
+      }
+
+      .manifesto p{
+        font-size:clamp(31px,9.5vw,45px)
+      }
+
+      .why-card{
+        min-height:0;
+        padding:24px
+      }
+
+      .number{
+        margin-bottom:28px;
+        font-size:23px
+      }
+
+      .why-card h3{
+        font-size:25px
+      }
+
+      .chapter{
+        min-height:0;
+        grid-template-columns:45px 1fr;
+        padding:21px 0
+      }
+
+      .chapter h3{
+        font-size:22px
+      }
+
+      .download-card{
+        padding:28px 24px
+      }
+
+      .download-actions{
+        flex-direction:column
+      }
+
+      .download-actions .button{
+        width:100%
+      }
+
+      .author-grid{
+        grid-template-columns:1fr;
+        text-align:left
+      }
+
+      .author-photo{
+        width:160px;
+        height:160px
+      }
+
+      .author-copy p{
+        font-size:17px
+      }
+
+      .social{
+        min-width:108px
+      }
+
+      .footer-inner{
+        align-items:flex-start;
+        flex-direction:column
+      }
     }
-
   </style>
 </head>
 
 <body>
 
   <nav class="nav glass" aria-label="Ana navigasyon">
-    <a class="brand" href="#">
-      <span class="brand-mark">KPA</span>
+    <a class="brand" href="#top" aria-label="Kripto Paraları Anlamak ana sayfa">
+      <span class="brand-mark" aria-hidden="true">KPA</span>
       <span>Kripto Paraları Anlamak</span>
     </a>
 
-    <div class="nav-links nav-actions">
-      <a class="nav-download" href="#indir">İndir</a>
-    </div>
+    <a class="nav-download" href="#indir">İndir</a>
   </nav>
 
-  <main>
+  <main id="top">
+
+    <!-- HERO -->
 
     <section class="hero">
       <div class="wrap hero-grid">
 
         <div>
-          <h1>Kripto Paraları Anlamak.</h1>
+          <h1>Kripto Paraları Anlamak</h1>
 
           <p class="hero-lead">
-            Kripto dünyasına sıfırdan bakmak isteyenler için; paradan blockchain'e,
-            DeFi'den güvenliğe uzanan sade ve temelden ilerleyen bir kitap.
+            Kripto dünyasına sıfırdan bakmak isteyenler için;
+            paradan blockchain'e, DeFi'den güvenliğe uzanan
+            sade ve temelden ilerleyen bir kitap.
           </p>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="book/kripto-paralari-anlamak.pdf" download>
+            <a
+              class="button button-primary"
+              href="assets/book/kripto-paralari-anlamak.pdf"
+              download
+            >
               ↓ PDF indir
-              <span>↓</span>
             </a>
 
-            <a class="button button-secondary" href="book/kripto-paralari-anlamak.epub" download>
+            <a
+              class="button button-secondary"
+              href="assets/book/kripto-paralari-anlamak.epub"
+              download
+            >
               ↓ EPUB indir
-              <span>↓</span>
             </a>
           </div>
 
           <p class="free-note">
-            <strong>Ücretsiz.</strong> Okuyabilir, indirebilir ve paylaşabilirsin.
+            <strong>Ücretsiz.</strong>
+            Okuyabilir, indirebilir ve paylaşabilirsin.
           </p>
         </div>
 
@@ -778,191 +797,324 @@
           <img
             class="mockup"
             src="assets/images/book-mockup.png"
-            alt="Kripto Paraları Anlamak kitabının kitap mockup'ı"
+            alt="Kripto Paraları Anlamak kitabının mockup görseli"
           >
         </div>
 
       </div>
     </section>
 
-    <section class="section" id="neden">
+
+    <!-- MANIFESTO -->
+
+    <section class="section manifesto-wrap">
       <div class="wrap">
 
         <div class="manifesto glass">
           <p>
-            Çünkü <em>bilgi, yalnızca satın alabilen insanların elinde kalmak zorunda değil.</em>
+            Çünkü <em>bilgi</em>, yalnızca satın alabilen insanların
+            elinde kalmak zorunda değil.
           </p>
         </div>
 
-        <div class="section-head" style="margin-top: 68px;">
-          <div class="section-kicker">Neden ücretsiz?</div>
-          <h2>Bir fiyat etiketi koymak yerine, erişimi kaldırmayı seçtim.</h2>
+      </div>
+    </section>
+
+
+    <!-- WHY FREE -->
+
+    <section class="section" id="neden-ucretsiz">
+      <div class="wrap">
+
+        <div class="section-head">
+          <span class="section-kicker">Neden ücretsiz?</span>
+
+          <h2>
+            Bilgiye giriş kapısı mümkün olduğunca açık olsun.
+          </h2>
         </div>
 
         <div class="why-grid">
 
           <article class="why-card glass">
             <div class="number">01</div>
-            <h3>Temelden başlıyor</h3>
+
+            <h3>Temelden başlıyor.</h3>
+
             <p>
-              Teknik geçmişiniz veya kripto para deneyiminiz olmadığını varsayarak
-              kavramları adım adım ele alıyor.
+              Konuyu bilmeyen birinin de takip edebileceği
+              bir başlangıç noktası oluşturmak için tasarlandı.
             </p>
           </article>
+
 
           <article class="why-card glass">
             <div class="number">02</div>
-            <h3>Gereksiz karmaşayı ayıklıyor</h3>
+
+            <h3>Gereksiz teknik yük yok.</h3>
+
             <p>
-              Amaç her şeyi anlatmak değil; neyin ne olduğunu anlayabileceğiniz
-              sağlam bir zihinsel çerçeve kurmak.
+              Önemli kavramları gündelik hayattan örneklerle anlatırken
+              okuyucuyu gereksiz ayrıntılarla boğmamaya çalışıyor.
             </p>
           </article>
+
 
           <article class="why-card glass">
             <div class="number">03</div>
-            <h3>Gerçek dünyadan örneklerle</h3>
+
+            <h3>Birlikte öğrenmek için.</h3>
+
             <p>
-              Soyut kavramları günlük hayattan örnekler ve sade anlatımlarla
-              zihinde daha kolay yer edecek hale getiriyor.
+              Kripto paraları anlamanın yalnızca yatırım yapmak isteyenlerin
+              değil, merak eden herkesin erişebileceği bir bilgi alanı
+              olması gerektiğine inanıyor.
             </p>
           </article>
 
+
           <article class="why-card glass">
             <div class="number">04</div>
-            <h3>Özgürce paylaşılabilir</h3>
+
+            <h3>Açıkça paylaşılabilsin.</h3>
+
             <p>
-              Kitaba erişmek isteyen herkesin, herhangi bir ödeme engeliyle
-              karşılaşmadan okuyabilmesi için ücretsiz olarak sunuluyor.
+              Kitabı indirip kendi cihazında okuyabilir,
+              ihtiyacı olan birine gönderebilirsin.
             </p>
           </article>
 
         </div>
+
       </div>
     </section>
+
+
+    <!-- CONTENT -->
 
     <section class="section" id="icerik">
       <div class="wrap">
 
         <div class="section-head">
-          <div class="section-kicker">Kitabın içeriği</div>
-          <h2>Yedi bölüm. Baştan sona bir yolculuk.</h2>
+          <span class="section-kicker">Kitabın içeriği</span>
+
+          <h2>
+            Yedi bölüm. Temelden başlayıp ekosisteme uzanan bir yol.
+          </h2>
         </div>
+
 
         <div class="chapters">
 
           <article class="chapter">
             <div class="chapter-no">01</div>
+
             <div>
               <h3>Para ve Değer Kavramı</h3>
-              <p>Paranın ne olduğunu, neden değer taşıdığını ve nasıl evrildiğini anlamak.</p>
+
+              <p>
+                Paranın ne olduğu, neden değer taşıdığı ve
+                değişim araçlarının nasıl evrildiği.
+              </p>
             </div>
           </article>
+
 
           <article class="chapter">
             <div class="chapter-no">02</div>
+
             <div>
               <h3>Kripto Paralar ve Varlık Sınıfları</h3>
-              <p>Kripto paraları diğer varlık sınıflarıyla birlikte konumlandırmak.</p>
+
+              <p>
+                Kripto varlıkların temel özellikleri ve
+                farklı varlık türleri arasındaki ayrımlar.
+              </p>
             </div>
           </article>
+
 
           <article class="chapter">
             <div class="chapter-no">03</div>
+
             <div>
               <h3>Ekosistem Katmanları</h3>
-              <p>Blockchain, ağlar ve kripto ekosisteminin temel yapı taşlarını keşfetmek.</p>
+
+              <p>
+                Blockchain ağları, protokoller, uygulamalar
+                ve bunların birbirleriyle ilişkisi.
+              </p>
             </div>
           </article>
+
 
           <article class="chapter">
             <div class="chapter-no">04</div>
+
             <div>
               <h3>DeFi (Merkeziyetsiz Finans)</h3>
-              <p>Aracıların olmadığı finansal sistemlerin nasıl çalıştığına bakmak.</p>
+
+              <p>
+                Merkeziyetsiz finansın temel mantığı,
+                kullanım alanları ve çalışma biçimi.
+              </p>
             </div>
           </article>
+
 
           <article class="chapter">
             <div class="chapter-no">05</div>
+
             <div>
               <h3>Yatırım ve Temel Analiz</h3>
-              <p>Bir varlığı değerlendirmeye başlamadan önce sorulması gereken temel sorular.</p>
+
+              <p>
+                Bir varlığı değerlendirirken bakılabilecek
+                temel göstergeler ve düşünme çerçevesi.
+              </p>
             </div>
           </article>
+
 
           <article class="chapter">
             <div class="chapter-no">06</div>
+
             <div>
               <h3>Cüzdanlar ve Güvenlik</h3>
-              <p>Varlıkları saklamak, anahtarları korumak ve temel güvenlik prensipleri.</p>
+
+              <p>
+                Varlıkların saklanması, anahtarlar, seed phrase
+                ve temel güvenlik alışkanlıkları.
+              </p>
             </div>
           </article>
 
+
           <article class="chapter">
             <div class="chapter-no">07</div>
+
             <div>
               <h3>Kripto Paralarda Kilometre Taşları</h3>
-              <p>Bugünkü ekosistemi şekillendiren önemli olaylara ve dönüm noktalarına bakmak.</p>
+
+              <p>
+                Ekosistemin oluşumunu ve dönüşümünü anlamaya
+                yardımcı olan önemli dönüm noktaları.
+              </p>
             </div>
           </article>
 
         </div>
+
       </div>
     </section>
+
+
+    <!-- DOWNLOAD -->
 
     <section class="section download-section" id="indir">
       <div class="wrap">
 
         <div class="download-card">
+
           <div>
-            <div class="section-kicker" style="color:#69b8af;">Ücretsiz erişim</div>
-            <h2>Kitabı indir, istediğin yerde oku.</h2>
+            <h2>Ücretsiz olarak oku.</h2>
+
             <p>
-              PDF veya EPUB formatında indir. İstediğin cihazda oku ve kitabı
-              ilgisini çekeceğini düşündüğün kişilerle özgürce paylaş.
+              Kitabın dijital kopyalarını doğrudan indirebilir
+              ve istediğin cihazda okuyabilirsin.
             </p>
           </div>
 
+
           <div class="download-actions">
-            <a class="button button-primary" href="book/kripto-paralari-anlamak.pdf" download>
-              PDF
+
+            <a
+              class="button button-primary"
+              href="assets/book/kripto-paralari-anlamak.pdf"
+              download
+            >
+              ↓ PDF
             </a>
-            <a class="button button-secondary" href="book/kripto-paralari-anlamak.epub" download>
-              EPUB
+
+            <a
+              class="button button-secondary"
+              href="assets/book/kripto-paralari-anlamak.epub"
+              download
+            >
+              ↓ EPUB
             </a>
+
           </div>
+
         </div>
 
       </div>
     </section>
 
+
+    <!-- AUTHOR -->
+
     <section class="section" id="yazar">
-      <div class="wrap author-grid">
+      <div class="wrap">
 
-        <img
-          class="author-photo"
-          src="assets/images/author.jpeg"
-          alt="Can Ahmet Değirmenci"
-        >
+        <div class="section-head">
+          <span class="section-kicker">Yazar</span>
 
-        <div class="author-copy">
-          <div class="section-kicker">Yazar</div>
           <h2>Can Ahmet Değirmenci</h2>
-
-          <p>
-            Bu kitabı, kripto paraları anlamak isteyen fakat nereden başlayacağını
-            bilemeyen insanlar için hazırladım. Amacım bir yatırım tavsiyesi
-            vermekten çok, okuyucunun kendi sorularını daha iyi sorabileceği
-            bir temel oluşturmak.
-          </p>
+        </div>
 
 
-          <div class="socials">
-            <a class="social" href="https://x.com/canahmeth" target="_blank" rel="noopener noreferrer">X</a>
-            <a class="social" href="https://t.me/canahmeth" target="_blank" rel="noopener noreferrer">Telegram</a>
-            <a class="social" href="https://www.linkedin.com/in/can-ahmet-de%C4%9Firmenci/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <div class="author-grid">
+
+          <img
+            class="author-photo"
+            src="assets/images/author.jpeg"
+            alt="Can Ahmet Değirmenci"
+          >
+
+
+          <div class="author-copy">
+
+            <p>
+              Bu kitap, kripto paraları daha anlaşılır bir dille anlatma
+              ve merak eden herkesin konuya sağlam bir başlangıç
+              yapabilmesini sağlama amacıyla hazırlandı.
+            </p>
+
+
+            <div class="socials" aria-label="Sosyal medya bağlantıları">
+
+              <a
+                class="social"
+                href="https://x.com/canahmeth"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                X
+              </a>
+
+              <a
+                class="social"
+                href="https://t.me/canahmeth"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Telegram
+              </a>
+
+              <a
+                class="social"
+                href="https://www.linkedin.com/in/can-ahmet-de%C4%9Firmenci/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+
+            </div>
+
           </div>
+
         </div>
 
       </div>
@@ -970,16 +1122,32 @@
 
   </main>
 
+
+  <!-- FOOTER -->
+
   <footer>
-    <div class="wrap footer-row">
+    <div class="wrap footer-inner">
+
       <div>
-        <div class="footer-brand">Kripto Paraları Anlamak</div>
-        <div class="footer-note">© 2026 Can Ahmet Değirmenci. Tüm hakları saklı değildir.</div>
+        <div class="footer-title">
+          Kripto Paraları Anlamak
+        </div>
+
+        <div class="footer-copy">
+          © 2026 Can Ahmet Değirmenci
+        </div>
       </div>
 
-      <div class="footer-links">
-        <a href="https://creativecommons.org/licenses/by/4.0/deed.tr" target="_blank" rel="license noopener noreferrer">Creative Commons Attribution 4.0</a>
-      </div>
+
+      <a
+        class="license"
+        href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        CC BY-NC-ND 4.0
+      </a>
+
     </div>
   </footer>
 
