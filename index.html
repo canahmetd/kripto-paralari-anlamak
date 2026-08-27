@@ -20,7 +20,7 @@
 
 <style>
   :root{
-    /* Palette drawn from the book cover: deep navy, muted teal-cyan, white */
+    /* Palette drawn from the book cover: deep navy, a lighter kin blue, white */
     --ink:#131b34;
     --ink-soft:#57647c;
     --ink-faint:#8996ab;
@@ -28,12 +28,13 @@
     --navy:#1d2b63;
     --navy-hover:#16204a;
 
-    --cyan:#0e7f93;
-    --cyan-soft:#e1f0f2;
-    --cyan-soft-hover:#cde5e8;
-    --cyan-ink:#0a5f6f;
+    --blue:#3b5fe0;
+    --blue-soft:#e8edfc;
+    --blue-soft-hover:#d7e0f8;
+    --blue-ink:#2c47b8;
 
-    --bg:#f6f8fb;
+    --bg:#ffffff;
+    --bg-tint:#f3f6fb;
 
     --glass-bg:rgba(255,255,255,0.56);
     --glass-bg-strong:rgba(255,255,255,0.78);
@@ -50,7 +51,16 @@
     margin:0;
     font-family:'Manrope', system-ui, -apple-system, sans-serif;
     color:var(--ink);
-    background:var(--bg);
+    background:linear-gradient(180deg,
+      var(--bg) 0%,
+      var(--bg) 12%,
+      var(--bg-tint) 28%,
+      var(--bg-tint) 40%,
+      var(--bg) 54%,
+      var(--bg) 64%,
+      var(--bg-tint) 80%,
+      var(--bg-tint) 90%,
+      var(--bg) 100%);
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
@@ -72,8 +82,8 @@
     font-size:0.78rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
-    color:var(--cyan-ink);
-    background:var(--cyan-soft);
+    color:var(--blue-ink);
+    background:var(--blue-soft);
     padding:6px 14px;
     border-radius:100px;
     margin-bottom:20px;
@@ -95,6 +105,10 @@
   }
 
   .center{ text-align:center; margin-inline:auto; }
+
+  /* ---------- Fine film grain overlay (premium, near-invisible texture) ---------- */
+  .grain{ position:fixed; inset:0; z-index:30; pointer-events:none; opacity:0.035; }
+  .grain svg{ width:100%; height:100%; display:block; }
 
   /* ---------- Glass primitive ---------- */
   .glass{
@@ -169,17 +183,24 @@
   .dl-btn.pdf{ background:var(--navy); color:#fff; box-shadow:0 16px 34px -16px rgba(29,43,99,0.55); }
   .dl-btn.pdf:hover{ background:var(--navy-hover); }
 
-  .dl-btn.epub{ background:var(--cyan-soft); color:var(--navy); box-shadow:0 16px 34px -18px rgba(23,179,209,0.3); }
-  .dl-btn.epub:hover{ background:var(--cyan-soft-hover); }
+  .dl-btn.epub{ background:var(--blue-soft); color:var(--navy); box-shadow:0 16px 34px -18px rgba(59,95,224,0.3); }
+  .dl-btn.epub:hover{ background:var(--blue-soft-hover); }
 
-  .hero-visual{ display:flex; justify-content:center; }
-  .mockup-frame{
-    position:relative; padding:28px;
-    border-radius:36px;
-    animation:float 6s ease-in-out infinite;
+  .hero-visual{ position:relative; display:flex; justify-content:center; }
+  .mockup-glow{
+    position:absolute;
+    width:440px; height:440px;
+    left:50%; top:50%; transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(29,43,99,0.32), transparent 72%);
+    filter:blur(80px);
+    z-index:0;
   }
-  .mockup-frame img{ width:min(100%,340px); margin-inline:auto; border-radius:16px; }
-  @keyframes float{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-16px);} }
+  .mockup-frame{
+    position:relative; z-index:1;
+    padding:28px;
+    border-radius:36px;
+  }
+  .mockup-frame img{ width:min(100%,390px); margin-inline:auto; border-radius:16px; }
 
   /* ---------- Quote ---------- */
   .quote-section{ padding-block:clamp(36px,5.5vw,72px); }
@@ -192,8 +213,8 @@
     margin:0 auto;
     color:var(--ink);
   }
-  blockquote::before{ content:"\201C"; color:var(--cyan); }
-  blockquote::after{ content:"\201D"; color:var(--cyan); }
+  blockquote::before{ content:"\201C"; color:var(--blue); }
+  blockquote::after{ content:"\201D"; color:var(--blue); }
 
   /* ---------- Why free ---------- */
   .reasons-grid{
@@ -207,7 +228,7 @@
   .reason-card:hover{ transform:translateY(-6px); box-shadow:0 30px 60px -24px rgba(19,27,52,0.3); }
   .reason-num{
     font-family:'Sora', sans-serif; font-weight:800;
-    font-size:2.5rem; color:var(--cyan); opacity:0.35;
+    font-size:2.5rem; color:var(--blue); opacity:0.35;
     line-height:1;
   }
   .reason-title{ font-family:'Sora', sans-serif; font-weight:700; font-size:1.2rem; margin-top:10px; }
@@ -226,7 +247,7 @@
   .chapter-num{
     font-family:'Sora', sans-serif; font-weight:800;
     font-size:clamp(1.6rem,3vw,2.2rem);
-    color:var(--cyan); opacity:0.45;
+    color:var(--blue); opacity:0.45;
     min-width:64px;
   }
   .chapter-title{ font-family:'Sora', sans-serif; font-weight:600; font-size:clamp(1rem,1.6vw,1.2rem); }
@@ -268,7 +289,7 @@
     transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
   }
   .social-link svg{ width:12px; height:12px; opacity:0.65; }
-  .social-link:hover{ transform:translateY(-2px); background:var(--cyan-soft); color:var(--cyan-ink); border-color:var(--cyan); }
+  .social-link:hover{ transform:translateY(-2px); background:var(--blue-soft); color:var(--blue-ink); border-color:var(--blue); }
 
   /* ---------- Footer ---------- */
   .site-footer{ padding-block:clamp(36px,5vw,60px) 32px; }
@@ -287,12 +308,21 @@
 
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
-    .mockup-frame{ animation:none !important; }
     .reveal{ opacity:1; transform:none; transition:none; }
   }
 </style>
 </head>
 <body>
+
+<div class="grain" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="grainFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#grainFilter)"/>
+  </svg>
+</div>
 
 <header class="topbar">
   <div class="topbar-inner">
@@ -320,6 +350,7 @@
         </div>
       </div>
       <div class="hero-visual">
+        <div class="mockup-glow"></div>
         <div class="mockup-frame glass">
           <img src="assets/images/book-mockup.png" alt="Kripto Paraları Anlamak kitabının mockup görseli">
         </div>
@@ -328,8 +359,10 @@
   </section>
 
   <!-- 2. QUOTE -->
-  <section class="quote-section wrap center reveal">
-    <blockquote>Çünkü bilgi, yalnızca satın alabilen insanların elinde kalmak zorunda değil.</blockquote>
+  <section class="quote-section reveal">
+    <div class="wrap center">
+      <blockquote>Çünkü bilgi, yalnızca satın alabilen insanların elinde kalmak zorunda değil.</blockquote>
+    </div>
   </section>
 
   <!-- 3. NEDEN ÜCRETSİZ -->
@@ -364,21 +397,23 @@
   </section>
 
   <!-- 4. KİTABIN İÇERİĞİ -->
-  <section class="section wrap">
-    <div class="center" style="max-width:640px;">
-      <span class="eyebrow">Kitabın İçeriği</span>
-      <h2 class="heading center">Yedi bölümde baştan sona bir yolculuk</h2>
-    </div>
+  <section class="section">
+    <div class="wrap">
+      <div class="center" style="max-width:640px;">
+        <span class="eyebrow">Kitabın İçeriği</span>
+        <h2 class="heading center">Yedi bölümde baştan sona bir yolculuk</h2>
+      </div>
 
-    <ul class="chapters-list">
-      <li class="chapter-item reveal"><span class="chapter-num">01</span><span class="chapter-title">Para ve Değer Kavramı</span></li>
-      <li class="chapter-item reveal"><span class="chapter-num">02</span><span class="chapter-title">Kripto Paralar ve Varlık Sınıfları</span></li>
-      <li class="chapter-item reveal"><span class="chapter-num">03</span><span class="chapter-title">Ekosistem Katmanları</span></li>
-      <li class="chapter-item reveal"><span class="chapter-num">04</span><span class="chapter-title">DeFi (Merkeziyetsiz Finans)</span></li>
-      <li class="chapter-item reveal"><span class="chapter-num">05</span><span class="chapter-title">Yatırım ve Temel Analiz</span></li>
-      <li class="chapter-item reveal"><span class="chapter-num">06</span><span class="chapter-title">Cüzdanlar ve Güvenlik</span></li>
-      <li class="chapter-item reveal"><span class="chapter-num">07</span><span class="chapter-title">Kripto Paralarda Kilometre Taşları</span></li>
-    </ul>
+      <ul class="chapters-list">
+        <li class="chapter-item reveal"><span class="chapter-num">01</span><span class="chapter-title">Para ve Değer Kavramı</span></li>
+        <li class="chapter-item reveal"><span class="chapter-num">02</span><span class="chapter-title">Kripto Paralar ve Varlık Sınıfları</span></li>
+        <li class="chapter-item reveal"><span class="chapter-num">03</span><span class="chapter-title">Ekosistem Katmanları</span></li>
+        <li class="chapter-item reveal"><span class="chapter-num">04</span><span class="chapter-title">DeFi (Merkeziyetsiz Finans)</span></li>
+        <li class="chapter-item reveal"><span class="chapter-num">05</span><span class="chapter-title">Yatırım ve Temel Analiz</span></li>
+        <li class="chapter-item reveal"><span class="chapter-num">06</span><span class="chapter-title">Cüzdanlar ve Güvenlik</span></li>
+        <li class="chapter-item reveal"><span class="chapter-num">07</span><span class="chapter-title">Kripto Paralarda Kilometre Taşları</span></li>
+      </ul>
+    </div>
   </section>
 
   <!-- 5. İNDİRME -->
@@ -394,31 +429,33 @@
   </section>
 
   <!-- 6. YAZAR HAKKINDA -->
-  <section class="section wrap">
-    <div class="author-card glass reveal">
-      <div class="center" style="margin-bottom:6px;">
-        <span class="eyebrow">Yazar Hakkında</span>
-      </div>
-      <div class="author-grid">
-        <div class="author-photo">
-          <img src="assets/images/author.jpeg" alt="Can Ahmet Değirmenci portre fotoğrafı">
+  <section class="section">
+    <div class="wrap">
+      <div class="author-card glass reveal">
+        <div class="center" style="margin-bottom:6px;">
+          <span class="eyebrow">Yazar Hakkında</span>
         </div>
-        <div>
-          <div class="author-name">Can Ahmet Değirmenci</div>
-          <p class="author-note">Kripto dünyasına ilk adım attığımda karşılaştığım dağınık ve karmaşık bilgi yığınını, herkesin anlayabileceği tek ve sade bir kaynağa dönüştürmek istedim.</p>
-          <div class="author-socials">
-            <a class="social-link" href="https://x.com/canahmeth" target="_blank" rel="noopener">
-              X
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
-            </a>
-            <a class="social-link" href="https://www.linkedin.com/in/can-ahmet-de%C4%9Firmenci/" target="_blank" rel="noopener">
-              LinkedIn
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
-            </a>
-            <a class="social-link" href="https://t.me/CanAhmeth" target="_blank" rel="noopener">
-              Telegram
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
-            </a>
+        <div class="author-grid">
+          <div class="author-photo">
+            <img src="assets/images/author.jpeg" alt="Can Ahmet Değirmenci portre fotoğrafı">
+          </div>
+          <div>
+            <div class="author-name">Can Ahmet Değirmenci</div>
+            <p class="author-note">Kripto dünyasına ilk adım attığımda karşılaştığım dağınık ve karmaşık bilgi yığınını, herkesin anlayabileceği tek ve sade bir kaynağa dönüştürmek istedim.</p>
+            <div class="author-socials">
+              <a class="social-link" href="https://x.com/canahmeth" target="_blank" rel="noopener">
+                X
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+              </a>
+              <a class="social-link" href="https://www.linkedin.com/in/can-ahmet-de%C4%9Firmenci/" target="_blank" rel="noopener">
+                LinkedIn
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+              </a>
+              <a class="social-link" href="https://t.me/CanAhmeth" target="_blank" rel="noopener">
+                Telegram
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
