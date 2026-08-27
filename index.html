@@ -20,7 +20,7 @@
 
 <style>
   :root{
-    /* Palette drawn from the book cover: deep navy, a lighter kin blue, white */
+    /* Palette drawn from the book cover: deep navy, muted teal-cyan, white */
     --ink:#131b34;
     --ink-soft:#57647c;
     --ink-faint:#8996ab;
@@ -28,10 +28,10 @@
     --navy:#1d2b63;
     --navy-hover:#16204a;
 
-    --blue:#3b5fe0;
-    --blue-soft:#e8edfc;
-    --blue-soft-hover:#d7e0f8;
-    --blue-ink:#2c47b8;
+    --cyan:#0891a8;
+    --cyan-soft:#d3eef2;
+    --cyan-soft-hover:#bfe4ea;
+    --cyan-ink:#066373;
 
     --bg:#ffffff;
     --bg-tint:#f3f6fb;
@@ -82,8 +82,8 @@
     font-size:0.78rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
-    color:var(--blue-ink);
-    background:var(--blue-soft);
+    color:var(--cyan-ink);
+    background:var(--cyan-soft);
     padding:6px 14px;
     border-radius:100px;
     margin-bottom:20px;
@@ -183,8 +183,8 @@
   .dl-btn.pdf{ background:var(--navy); color:#fff; box-shadow:0 16px 34px -16px rgba(29,43,99,0.55); }
   .dl-btn.pdf:hover{ background:var(--navy-hover); }
 
-  .dl-btn.epub{ background:var(--blue-soft); color:var(--navy); box-shadow:0 16px 34px -18px rgba(59,95,224,0.3); }
-  .dl-btn.epub:hover{ background:var(--blue-soft-hover); }
+  .dl-btn.epub{ background:var(--cyan-soft); color:var(--navy); box-shadow:0 16px 34px -18px rgba(8,145,168,0.3); }
+  .dl-btn.epub:hover{ background:var(--cyan-soft-hover); }
 
   .hero-visual{ position:relative; display:flex; justify-content:center; }
   .mockup-glow{
@@ -213,8 +213,8 @@
     margin:0 auto;
     color:var(--ink);
   }
-  blockquote::before{ content:"\201C"; color:var(--blue); }
-  blockquote::after{ content:"\201D"; color:var(--blue); }
+  blockquote::before{ content:"\201C"; color:var(--cyan); }
+  blockquote::after{ content:"\201D"; color:var(--cyan); }
 
   /* ---------- Why free ---------- */
   .reasons-grid{
@@ -228,7 +228,7 @@
   .reason-card:hover{ transform:translateY(-6px); box-shadow:0 30px 60px -24px rgba(19,27,52,0.3); }
   .reason-num{
     font-family:'Sora', sans-serif; font-weight:800;
-    font-size:2.5rem; color:var(--blue); opacity:0.35;
+    font-size:2.5rem; color:var(--cyan); opacity:0.45;
     line-height:1;
   }
   .reason-title{ font-family:'Sora', sans-serif; font-weight:700; font-size:1.2rem; margin-top:10px; }
@@ -247,7 +247,7 @@
   .chapter-num{
     font-family:'Sora', sans-serif; font-weight:800;
     font-size:clamp(1.6rem,3vw,2.2rem);
-    color:var(--blue); opacity:0.45;
+    color:var(--cyan); opacity:0.55;
     min-width:64px;
   }
   .chapter-title{ font-family:'Sora', sans-serif; font-weight:600; font-size:clamp(1rem,1.6vw,1.2rem); }
@@ -289,7 +289,7 @@
     transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
   }
   .social-link svg{ width:12px; height:12px; opacity:0.65; }
-  .social-link:hover{ transform:translateY(-2px); background:var(--blue-soft); color:var(--blue-ink); border-color:var(--blue); }
+  .social-link:hover{ transform:translateY(-2px); background:var(--cyan-soft); color:var(--cyan-ink); border-color:var(--cyan); }
 
   /* ---------- Footer ---------- */
   .site-footer{ padding-block:clamp(36px,5vw,60px) 32px; }
@@ -342,7 +342,7 @@
       <div class="hero-text">
         <h1>Kripto Paraları<br>Anlamak</h1>
         <p class="lead">
-          Kulaktan dolma bilgilerle değil, işin mantığını kavrayarak başlayın. Blok zincirden DeFi’ye, güvenli cüzdan kullanımından temel yatırım prensiplerine kadar ihtiyacınız olan her şey. Kafa karıştıran terimlerden uzak, adım adım ve tamamen ücretsiz.
+          Blok zincirinden DeFi'ye, cüzdanlardan yatırım mantığına kadar kripto para dünyasını sıfırdan ve sade bir dille anlatan; teknik jargon yerine sistematik bir çerçeve arayan yeni başlayanlar için hazırlanmış, tamamen ücretsiz bir kaynak.
         </p>
         <div class="hero-ctas">
           <a class="dl-btn pdf" href="https://canahmetd.github.io/kripto-paralari-anlamak/book/kripto-paralari-anlamak.pdf" download>PDF indir</a>
@@ -420,7 +420,7 @@
   <section id="indir" class="section download-section wrap">
     <div class="glass-panel glass reveal">
       <h2 class="heading center" style="margin-inline:auto;">Kitabı şimdi indirin</h2>
-      <p class="lead center" style="margin-inline:auto;">Kayıt yok, ücret yok. Sadece bilgi. Size uygun formatı seçin ve okumaya başlayın.</p>
+      <p class="lead center" style="margin-inline:auto;">Kayıt yok, ücret yok — sadece bilgi. Size uygun formatı seçin ve okumaya başlayın.</p>
       <div class="hero-ctas">
         <a class="dl-btn pdf" href="https://canahmetd.github.io/kripto-paralari-anlamak/book/kripto-paralari-anlamak.pdf" download>PDF indir</a>
         <a class="dl-btn epub" href="https://canahmetd.github.io/kripto-paralari-anlamak/book/kripto-paralari-anlamak.epub" download>EPUB indir</a>
@@ -441,7 +441,7 @@
           </div>
           <div>
             <div class="author-name">Can Ahmet Değirmenci</div>
-            <p class="author-note">Kripto ve blockchain dünyasında hem okuyan hem de yazan biri. Bu kitap ise o merakın ve deneyimin bugüne kadar birikmiş halini paylaşma isteğinden doğdu.</p>
+            <p class="author-note">Kripto dünyasına ilk adım attığımda karşılaştığım dağınık ve karmaşık bilgi yığınını, herkesin anlayabileceği tek ve sade bir kaynağa dönüştürmek istedim.</p>
             <div class="author-socials">
               <a class="social-link" href="https://x.com/canahmeth" target="_blank" rel="noopener">
                 X
