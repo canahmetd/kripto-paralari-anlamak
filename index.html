@@ -300,6 +300,49 @@
     color:var(--ink-faint); font-size:0.85rem;
   }
   .footer-bottom a{ color:var(--ink-soft); text-decoration:underline; text-underline-offset:3px; }
+  .privacy-link{
+    background:none; border:none; padding:0; margin:0;
+    font:inherit; font-size:0.85rem; color:var(--ink-faint);
+    text-decoration:underline; text-underline-offset:3px;
+    cursor:pointer;
+  }
+  .privacy-link:hover{ color:var(--ink-soft); }
+
+  /* ---------- Privacy note modal ---------- */
+  .privacy-modal{
+    position:fixed; inset:0; z-index:100;
+    display:none; align-items:center; justify-content:center;
+    padding:24px;
+  }
+  .privacy-modal.is-open{ display:flex; }
+  .privacy-modal-overlay{
+    position:absolute; inset:0;
+    background:rgba(19,27,52,0.45);
+    -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px);
+  }
+  .privacy-modal-panel{
+    position:relative; z-index:1;
+    width:100%; max-width:400px;
+    padding:30px 26px;
+    background:var(--glass-bg-strong);
+  }
+  .privacy-modal-panel h3{
+    font-family:'Sora', sans-serif; font-weight:700; font-size:1.1rem;
+    margin-bottom:12px; padding-right:20px;
+  }
+  .privacy-modal-panel p{
+    color:var(--ink-soft); font-size:0.92rem; line-height:1.7;
+  }
+  .privacy-modal-close{
+    position:absolute; top:14px; right:14px;
+    width:30px; height:30px; border-radius:50%;
+    border:none; background:rgba(19,27,52,0.06); color:var(--ink);
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .2s ease;
+  }
+  .privacy-modal-close svg{ width:13px; height:13px; }
+  .privacy-modal-close:hover{ background:rgba(19,27,52,0.12); }
 
   /* ---------- Reveal on scroll ---------- */
   .reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s ease; }
@@ -470,9 +513,20 @@
 <!-- 7. FOOTER -->
 <footer class="site-footer wrap">
   <p class="footer-bottom">
-    © 2026 Can Ahmet Değirmenci. <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.tr" target="_blank" rel="noopener">CC BY-NC 4.0</a> lisansı ile paylaşılmıştır
+    © 2026 Can Ahmet Değirmenci. <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.tr" target="_blank" rel="noopener">CC BY-NC 4.0</a> lisansı ile paylaşılmıştır · <button type="button" class="privacy-link" id="privacyTrigger">Gizlilik Notu</button>
   </p>
 </footer>
+
+<div class="privacy-modal" id="privacyModal" aria-hidden="true">
+  <div class="privacy-modal-overlay" data-privacy-close></div>
+  <div class="privacy-modal-panel glass" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+    <button type="button" class="privacy-modal-close" data-privacy-close aria-label="Kapat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <h3 id="privacyModalTitle">Gizlilik Notu</h3>
+    <p>Bu site çerez kullanmıyor ve isim, e-posta gibi hiçbir kişisel bilgi toplamıyor. Ziyaretçi sayısını ve indirme butonlarının kullanımını, kimseyi tanımlamayan anonim bir analiz aracı olan GoatCounter ile ölçüyorum. Kitabı indirmek için kayıt ya da bilgi paylaşımı gerekmiyor. Sorularınız için aşağıdaki sosyal medya hesaplarımdan bana ulaşabilirsiniz.</p>
+  </div>
+</div>
 
 <script>
   // Scroll reveal
@@ -509,6 +563,27 @@
     frame.style.transition = 'transform .4s ease';
     frame.style.transformStyle = 'preserve-3d';
     hero.style.perspective = '1200px';
+  }
+
+  // Privacy note modal
+  const privacyTrigger = document.getElementById('privacyTrigger');
+  const privacyModal = document.getElementById('privacyModal');
+  if (privacyTrigger && privacyModal) {
+    const openPrivacy = () => {
+      privacyModal.classList.add('is-open');
+      privacyModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+    const closePrivacy = () => {
+      privacyModal.classList.remove('is-open');
+      privacyModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    privacyTrigger.addEventListener('click', openPrivacy);
+    privacyModal.querySelectorAll('[data-privacy-close]').forEach(el => el.addEventListener('click', closePrivacy));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && privacyModal.classList.contains('is-open')) closePrivacy();
+    });
   }
 </script>
 
